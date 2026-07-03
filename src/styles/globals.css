@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../../tailwind.config.js";
 
 @layer base {
   :root {
@@ -59,15 +58,14 @@
   }
 }
 
+@utility nunito-1000 {
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+}
+
 @layer base {
-  .nunito-1000 {
-      font-family: "Nunito", sans-serif;
-      font-weight: 700;
-    }
   * {
     @apply border-border nunito-1000;
-
-
   }
 
   body {
