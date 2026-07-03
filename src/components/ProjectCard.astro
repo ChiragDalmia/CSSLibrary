@@ -1,13 +1,6 @@
 ---
 import { cn } from "@/lib/utils";
-
-interface Project {
-  title: string;
-  description: string;
-  icon: string;
-  github: string;
-  demo: string;
-}
+import type { Project } from "@/data/projects";
 
 interface Props {
   project: Project;
@@ -24,7 +17,7 @@ const { project } = Astro.props;
     class={cn(
       "block w-full overflow-hidden rounded-3xl border border-transparent",
       "shadow-2xl transition-all duration-500 hover:translate-x-1 hover:shadow-xl",
-      "dark:border-neutral-800"
+      "dark:border-neutral-800",
     )}
     aria-label={`View ${project.title} demo`}
   >
@@ -39,7 +32,7 @@ const { project } = Astro.props;
     <div
       class={cn(
         "absolute inset-0 flex flex-col justify-center rounded-3xl bg-black/0 opacity-0",
-        "transition-all duration-500 group-hover:bg-black/70 group-hover:opacity-100"
+        "transition-all duration-500 group-hover:bg-black/70 group-hover:opacity-100",
       )}
     >
       <div class="p-5">
@@ -56,12 +49,12 @@ const { project } = Astro.props;
       </div>
     </div>
   </a>
-  <div class="absolute bottom-4 right-4 overflow-hidden rounded-full">
+  <div class="absolute right-4 bottom-4 overflow-hidden rounded-full">
     <a
       href={project.github}
       target="_blank"
       rel="noopener noreferrer"
-      class="flex h-10 w-10 scale-75 items-center justify-center bg-white/10 opacity-0 transition-all duration-700 hover:bg-white/20 group-hover:scale-100 group-hover:opacity-100"
+      class="flex h-10 w-10 scale-75 items-center justify-center bg-white/10 opacity-0 transition-all duration-700 group-hover:scale-100 group-hover:opacity-100 hover:bg-white/20"
       aria-label={`View ${project.title} source code on GitHub`}
     >
       <svg
@@ -92,7 +85,7 @@ const { project } = Astro.props;
       {
         threshold: 0.1,
         rootMargin: "0px 0px 100px 0px",
-      }
+      },
     );
 
     document.querySelectorAll("[data-project-card]").forEach((card) => {
